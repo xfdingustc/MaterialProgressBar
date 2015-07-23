@@ -80,10 +80,11 @@ public class FABCircleProgress extends FrameLayout {
   }
 
   private void addArcView() {
+    setClipChildren(false);
     mProgressArc = new ProgressArcView(getContext(), mArcColor, mArcWidth, mRoundedStroke);
 
-    LayoutParams params = new FrameLayout.LayoutParams(getFabDimension() + mArcWidth * 10,
-        getFabDimension() + mArcWidth * 10,
+    LayoutParams params = new FrameLayout.LayoutParams(getFabDimension() + mArcWidth,
+        getFabDimension() + mArcWidth,
         Gravity.CENTER);
 
     addView(mProgressArc, params);

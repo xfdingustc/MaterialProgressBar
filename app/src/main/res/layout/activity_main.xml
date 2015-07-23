@@ -65,10 +65,8 @@
 
     <com.xfdingustc.materialprogressbar.FABCircleProgress
         android:id="@+id/fabProgressBar"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:background="@android:color/white"
-        android:alpha="0.3"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         app:layout_anchor="@id/fab"
         app:layout_anchorGravity="center"
         >

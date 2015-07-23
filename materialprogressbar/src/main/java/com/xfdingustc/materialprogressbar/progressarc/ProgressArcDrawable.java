@@ -7,6 +7,7 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import com.orhanobut.logger.Logger;
 
@@ -37,7 +38,7 @@ public class ProgressArcDrawable extends Drawable {
     mPaint.setAntiAlias(true);
     mPaint.setStyle(Paint.Style.STROKE);
     mPaint.setStrokeWidth(mStrokeWidth);
-    mPaint.setStrokeCap(roundedStroke ? Paint.Cap.ROUND : Paint.Cap.BUTT);
+    mPaint.setStrokeCap(roundedStroke ? Paint.Cap.ROUND : Paint.Cap.ROUND);
     mPaint.setColor(mArcColor);
   }
 
@@ -48,7 +49,7 @@ public class ProgressArcDrawable extends Drawable {
 
     startAngle = 0;
     sweepAngle = 350;
-    Logger.t(TAG).d("arc bound: " + mArcBounds.toString());
+
     canvas.drawArc(mArcBounds, startAngle, sweepAngle, false, mPaint);
   }
 
@@ -70,9 +71,9 @@ public class ProgressArcDrawable extends Drawable {
   @Override
   protected void onBoundsChange(Rect bounds) {
     super.onBoundsChange(bounds);
-    mArcBounds.left = bounds.left + 6;
-    mArcBounds.right = bounds.right - 6;
-    mArcBounds.top = bounds.top + 6;
-    mArcBounds.bottom = bounds.bottom -6;
+    mArcBounds.left = bounds.left ;
+    mArcBounds.right = bounds.right ;
+    mArcBounds.top = bounds.top ;
+    mArcBounds.bottom = bounds.bottom ;
   }
 }
