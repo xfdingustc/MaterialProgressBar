@@ -1,18 +1,31 @@
-package com.xfdingustc.materialprogressbar;
+package com.xfdingustc.materialprogressbar_sample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import com.xfdingustc.materialprogressbar.FABCircleProgress;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
 
+  @InjectView(R.id.rvContentList)
   RecyclerView mRecyclerView;
+
+  @InjectView(R.id.fabProgressBar)
+  FABCircleProgress mFabProgressBar;
+
+  @OnClick(R.id.fab)
+  public void onFabClicked() {
+    mFabProgressBar.show();
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
   private void initViews() {
     setContentView(R.layout.activity_main);
-    mRecyclerView = (RecyclerView)findViewById(R.id.rvContentList);
+    ButterKnife.inject(this);
+
     mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     List<String> strList = new ArrayList<>();
@@ -34,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     SimpleAdapter adapter = new SimpleAdapter(this, strList);
     mRecyclerView.setAdapter(adapter);
+
+
   }
 
 

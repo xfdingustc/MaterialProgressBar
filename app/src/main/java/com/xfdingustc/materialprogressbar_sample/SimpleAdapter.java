@@ -1,4 +1,4 @@
-package com.xfdingustc.materialprogressbar;
+package com.xfdingustc.materialprogressbar_sample;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

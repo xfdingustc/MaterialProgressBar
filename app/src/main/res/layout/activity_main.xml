@@ -53,7 +53,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_sync_play"
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -62,5 +62,17 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|right|end"
         />
+
+    <com.xfdingustc.materialprogressbar.FABCircleProgress
+        android:id="@+id/fabProgressBar"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:background="@android:color/white"
+        android:alpha="0.3"
+        app:layout_anchor="@id/fab"
+        app:layout_anchorGravity="center"
+        >
+
+    </com.xfdingustc.materialprogressbar.FABCircleProgress>
 
 </android.support.design.widget.CoordinatorLayout>
