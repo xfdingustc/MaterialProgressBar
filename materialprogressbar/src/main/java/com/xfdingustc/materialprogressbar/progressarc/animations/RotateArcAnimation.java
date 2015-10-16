@@ -21,7 +21,7 @@ public class RotateArcAnimation implements ArcAnimation {
   }
 
   @Override
-  public ValueAnimator getAniamator() {
+  public ValueAnimator getAnimator() {
     return mAniamtior;
   }
 }
