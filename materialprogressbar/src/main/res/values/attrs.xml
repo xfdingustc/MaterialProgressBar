@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FABCircleProgress">
-        <attr name="arcColor" format="color"/>
-        <attr name="arcWidth" format="dimension"/>
-        <attr name="roundedStroke" format="boolean"/>
+        <attr name="mpb_arc_color" format="color"/>
+        <attr name="mpb_arc_width" format="dimension"/>
+        <attr name="mpb_rounded_stroke" format="boolean"/>
     </declare-styleable>
 </resources>
