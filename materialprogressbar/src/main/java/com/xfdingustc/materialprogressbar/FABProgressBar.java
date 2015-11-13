@@ -18,35 +18,43 @@ import com.xfdingustc.materialprogressbar.progressarc.ProgressArcView;
 /**
  * Created by Xiaofei on 2015/7/23.
  */
-@DefaultBehavior(FABCircleProgress.Behavior.class)
-public class FABCircleProgress extends FrameLayout {
-    private final static String TAG = FABCircleProgress.class.getSimpleName();
+@DefaultBehavior(FABProgressBar.Behavior.class)
+public class FABProgressBar extends FrameLayout {
+    private final static String TAG = FABProgressBar.class.getSimpleName();
     private boolean mViewsAdded = false;
     private ProgressArcView mProgressArc;
+
+    private FABProgressBarListener mListener;
 
     private int mArcColor;
     private int mArcWidth;
     private boolean mRoundedStroke;
+    private boolean mReusable;
 
-    public FABCircleProgress(Context context) {
+    public FABProgressBar(Context context) {
         super(context);
     }
 
-    public FABCircleProgress(Context context, AttributeSet attrs) {
+    public FABProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public FABCircleProgress(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FABProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public FABCircleProgress(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public FABProgressBar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
+
+    public interface FABProgressBarListener {
+        void onFABProgressAnimationEnd();
+    }
+
 
     private void init(AttributeSet attrs) {
         setupInitialAttributes(attrs);
@@ -55,15 +63,15 @@ public class FABCircleProgress extends FrameLayout {
     private void setupInitialAttributes(AttributeSet attrs) {
         if (attrs != null) {
             TypedArray attrArray = getContext().obtainStyledAttributes(attrs, R.styleable
-                .FABCircleProgress, 0, 0);
+                .FABProgressBar, 0, 0);
 
-            mArcColor = attrArray.getColor(R.styleable.FABCircleProgress_mpb_arc_color,
+            mArcColor = attrArray.getColor(R.styleable.FABProgressBar_mpb_arc_color,
                 getResources().getColor(R.color.fab_orange_dark));
-            mArcWidth = attrArray.getDimensionPixelSize(R.styleable.FABCircleProgress_mpb_arc_width,
+            mArcWidth = attrArray.getDimensionPixelSize(R.styleable.FABProgressBar_mpb_arc_width,
                 getResources().getDimensionPixelSize(R.dimen.progress_arc_stroke_width));
-            mRoundedStroke = attrArray.getBoolean(R.styleable.FABCircleProgress_mpb_rounded_stroke, false);
+            mRoundedStroke = attrArray.getBoolean(R.styleable.FABProgressBar_mpb_rounded_stroke, false);
 
-
+            mReusable = attrArray.getBoolean(R.styleable.FABProgressBar_mpb_reusable, false);
             attrArray.recycle();
         }
     }
@@ -97,17 +105,17 @@ public class FABCircleProgress extends FrameLayout {
 
     }
 
-    public static class Behavior extends CoordinatorLayout.Behavior<FABCircleProgress> {
+    public static class Behavior extends CoordinatorLayout.Behavior<FABProgressBar> {
 
         public Behavior() {
 
         }
 
-        public boolean layoutDependsOn(CoordinatorLayout parent, FABCircleProgress child, View dependency) {
+        public boolean layoutDependsOn(CoordinatorLayout parent, FABProgressBar child, View dependency) {
             return dependency instanceof Snackbar.SnackbarLayout;
         }
 
-        public boolean onDependentViewChanged(CoordinatorLayout parent, FABCircleProgress child, View
+        public boolean onDependentViewChanged(CoordinatorLayout parent, FABProgressBar child, View
             dependency) {
             if (dependency instanceof FloatingActionButton) {
                 FloatingActionButton fab = (FloatingActionButton) dependency;
@@ -122,5 +130,13 @@ public class FABCircleProgress extends FrameLayout {
 
     public void show() {
         mProgressArc.show();
+    }
+
+    public void hide() {
+        mProgressArc.stop();
+    }
+
+    public void addListener(FABProgressBarListener listener) {
+        mListener = listener;
     }
 }

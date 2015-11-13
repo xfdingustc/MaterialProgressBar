@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.xfdingustc.materialprogressbar.FABCircleProgress;
+import com.xfdingustc.materialprogressbar.FABProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
   RecyclerView mRecyclerView;
 
   @InjectView(R.id.fabProgressBar)
-  FABCircleProgress mFabProgressBar;
+  FABProgressBar mFabProgressBar;
 
   @OnClick(R.id.fab)
   public void onFabClicked() {

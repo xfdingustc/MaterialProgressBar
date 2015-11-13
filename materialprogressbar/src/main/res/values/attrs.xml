@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="FABCircleProgress">
+    <declare-styleable name="FABProgressBar">
         <attr name="mpb_arc_color" format="color"/>
         <attr name="mpb_arc_width" format="dimension"/>
         <attr name="mpb_rounded_stroke" format="boolean"/>
+        <attr name="mpb_reusable" format="boolean"/>
     </declare-styleable>
 </resources>

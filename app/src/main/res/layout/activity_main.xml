@@ -63,7 +63,7 @@
         app:layout_anchorGravity="bottom|right|end"
         />
 
-    <com.xfdingustc.materialprogressbar.FABCircleProgress
+    <com.xfdingustc.materialprogressbar.FABProgressBar
         android:id="@+id/fabProgressBar"
         android:layout_width="64dp"
         android:layout_height="64dp"
@@ -71,6 +71,6 @@
         app:layout_anchorGravity="center"
         >
 
-    </com.xfdingustc.materialprogressbar.FABCircleProgress>
+    </com.xfdingustc.materialprogressbar.FABProgressBar>
 
 </android.support.design.widget.CoordinatorLayout>
